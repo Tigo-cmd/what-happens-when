@@ -228,7 +228,7 @@ DNS lookup
 ARP process
 -----------
 
-In order to send an ARP (Address Resolution Protocol) broadcast the network
+To send an ARP (Address Resolution Protocol) broadcast the network
 stack library needs the target IP address to lookup. It also needs to know the
 MAC address of the interface it will use to send out the ARP broadcast.
 
@@ -390,12 +390,15 @@ TLS handshake
 * The client sends a ``Finished`` message to the server, encrypting a hash of
   the transmission up to this point with the symmetric key.
 
-* The server generates its own hash, and then decrypts the client-sent hash
+* The server generates its own hash and then decrypts the client-sent hash
   to verify that it matches. If it does, it sends its own ``Finished`` message
   to the client, also encrypted with the symmetric key.
 
 * From now on the TLS session transmits the application (HTTP) data encrypted
   with the agreed symmetric key.
+
+ In modern TLS (e.g., TLS 1.3), the handshake process has been streamlined to reduce latency and improve security. One of the significant changes includes the elimination of certain handshake steps and the consolidation of others to achieve forward secrecy and quicker session resumption capabilities.
+
 
 If a packet is dropped
 ----------------------
